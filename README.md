@@ -137,21 +137,7 @@ moveToXY(-127, 80);
 - 🧽 **复合摩擦材料**：在接触面贴合海绵或橡胶层，进一步提升摩擦适配性
 - 🪶 **轻量化材料**：替换更轻的打印材料以提升运动稳定性
 
----
 
-## 📁 仓库结构 / Repository Structure
-
-```text
-.
-├── README.md           本说明文件
-├── cad/                Shapr3D 模型 + STL 导出文件
-├── code/               Arduino 控制代码
-├── photos/             项目过程照片与最终成果图
-├── video/              运行演示视频（可选）
-└── docs/               Worksheet 1 & 2（脱敏版，供参考）
-```
-
----
 
 ## 📬 联系方式 / Contact
 
