@@ -1,26 +1,33 @@
 # 末端执行器结构设计与自动化抓取系统
-## End-Effector Gripper Design & Automated Pick-and-Place System
 
-> **课程 / Course**：AAE2103 / IC2117 Applied Engineering Fundamentals
-> **学校 / Institution**：The Hong Kong Polytechnic University 香港理工大学
-> **时间 / Period**：Sep 2025 – Nov 2025
-> **项目类型 / Type**：Individual Project（个人独立项目）
-> **作者 / Author**：He Youbin (贺宥斌)
+### End-Effector Gripper Design & Automated Pick-and-Place System
 
----
+> Individual project for AAE2103 / IC2117 *Applied Engineering Fundamentals*, completed in Fall 2025 at The Hong Kong Polytechnic University.
 
-## 项目简介 / Overview
-
-针对瓶盖抓取任务，独立完成了一个完整的末端执行器（end-effector）结构设计与自动化系统集成项目。覆盖**问题分析 → 文献调研 → 机械结构设计 → 3D 打印原型 → Arduino 嵌入式控制 → 自动化抓取测试 → 工程复盘**的全流程。
-
-This project independently delivers a complete end-effector design and automated pick-and-place system for bottle cap manipulation tasks, covering problem analysis, mechanism design, 3D-printed prototyping, Arduino-based embedded control, automated grasping tests, and engineering reflection.
+| | |
+|:---|:---|
+| **课程 / Course** | AAE2103 / IC2117 — Applied Engineering Fundamentals |
+| **学校 / Institution** | The Hong Kong Polytechnic University 香港理工大学 |
+| **时间 / Period** | Sep 2025 – Nov 2025 |
+| **类型 / Type** | Individual Project（个人独立项目） |
+| **作者 / Author** | He Youbin (贺宥斌) |
 
 ---
 
-## 关键成果 / Key Achievements
+## 📌 项目简介 / Overview
+
+针对**瓶盖抓取任务**，独立完成了一个完整的末端执行器（end-effector）结构设计与自动化系统集成项目，覆盖：
+
+**问题分析 → 文献调研 → 机械结构设计 → 3D 打印原型 → Arduino 嵌入式控制 → 自动化抓取测试 → 工程复盘**
+
+An independently delivered end-effector design and automated pick-and-place system for bottle cap manipulation, covering problem analysis, mechanism design, 3D-printed prototyping, Arduino-based embedded control, automated grasping tests, and engineering reflection.
+
+---
+
+## 🎯 关键成果 / Key Achievements
 
 | 指标 | 结果 |
-|---|---|
+|:---|:---|
 | 适配瓶盖直径 | **19 – 26 mm** |
 | 抓取成功率 | **100%**（在临界速度参数下） |
 | 连续运行 | **1 分钟 零失误** |
@@ -29,10 +36,10 @@ This project independently delivers a complete end-effector design and automated
 
 ---
 
-## 技术栈 / Tech Stack
+## 🛠️ 技术栈 / Tech Stack
 
 | 模块 | 工具 / 平台 |
-|---|---|
+|:---|:---|
 | CAD 设计 | Shapr3D |
 | 3D 打印 | Bambu Lab X1-Carbon, PLA |
 | 嵌入式控制 | Arduino + AccelStepper 库 |
@@ -40,7 +47,7 @@ This project independently delivers a complete end-effector design and automated
 
 ---
 
-## 系统架构 / System Overview
+## 🔧 系统架构 / System Overview
 
 ![system overview](photos/system_overview.png)
 
@@ -48,7 +55,7 @@ This project independently delivers a complete end-effector design and automated
 
 ---
 
-## 结构设计与迭代 / Design & Iteration
+## 📐 结构设计与迭代 / Design & Iteration
 
 ### V1（锯齿版）vs V2（光面版）
 
@@ -69,11 +76,11 @@ This project independently delivers a complete end-effector design and automated
 
 ---
 
-## 控制逻辑 / Control Logic
+## ⚙️ 控制逻辑 / Control Logic
 
 6 步顺序控制状态机：
 
-```
+```text
 伺服张开 → X 轴定位 → Y 轴下降 → 伺服夹紧 → X 轴搬运 → Y 轴下降 → 伺服张开（释放）
 ```
 
@@ -97,21 +104,23 @@ moveToXY(-127, 80);
 
 ---
 
-## 测试与结果 / Testing & Results
+## 🧪 测试与结果 / Testing & Results
 
 ![grasping](photos/gripper_grasping.png)
 
 通过对速度 / 加速度参数的系统化扫描，发现 **1000 单位**为保证抓取成功率的临界值：
 
-- 低于 1000：抓取稳定但效率不高
-- **= 1000**：100% 成功率，1 分钟连续运行零失误 ✓
-- 高于 1000：夹爪在快速下降中将瓶盖反向推开，成功率显著下降
+| 参数 | 表现 |
+|:---|:---|
+| 低于 1000 | 抓取稳定但效率不高 |
+| **= 1000** | **100% 成功率，1 分钟连续运行零失误** ✅ |
+| 高于 1000 | 夹爪在快速下降中将瓶盖反向推开，成功率显著下降 |
 
 测试环境：表面平整的塑料板 + 限位卡槽，避免电机振动导致整机滑移。
 
 ---
 
-## 工程反思 / Engineering Reflection
+## 💡 工程反思 / Engineering Reflection
 
 从 5 个维度完成项目复盘：
 
@@ -123,16 +132,16 @@ moveToXY(-127, 80);
 
 ### 后续改进方向 / Future Improvements
 
-- **加装视觉/力传感器**实现闭环位置控制与抓力反馈
-- **优化运动控制算法**（梯形速度规划、闭环位置控制）
-- **复合摩擦材料**（在接触面贴合海绵或橡胶层，进一步提升摩擦适配性）
-- **轻量化材料**：替换更轻的打印材料以提升运动稳定性
+- 🎯 **加装视觉/力传感器**：实现闭环位置控制与抓力反馈
+- ⚡ **优化运动控制算法**：梯形速度规划、闭环位置控制
+- 🧽 **复合摩擦材料**：在接触面贴合海绵或橡胶层，进一步提升摩擦适配性
+- 🪶 **轻量化材料**：替换更轻的打印材料以提升运动稳定性
 
 ---
 
-## 仓库结构 / Repository Structure
+## 📁 仓库结构 / Repository Structure
 
-```
+```text
 .
 ├── README.md           本说明文件
 ├── cad/                Shapr3D 模型 + STL 导出文件
@@ -144,8 +153,8 @@ moveToXY(-127, 80);
 
 ---
 
-## 联系方式 / Contact
+## 📬 联系方式 / Contact
 
 **He Youbin (贺宥斌)**
-Aerospace Engineering, The Hong Kong Polytechnic University
-Email：18774878768@163.com
+Aerospace Engineering · The Hong Kong Polytechnic University
+✉️ 18774878768@163.com
